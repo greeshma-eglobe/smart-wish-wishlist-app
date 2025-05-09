@@ -25,7 +25,11 @@ export async function loader({ request }) {
       productId: { in: productIds }, // Fetch multiple products
     },
   });
-  return cors(request, json({ wishlist }));
+
+  return json(
+     wishlist,
+    { headers: { "Access-Control-Allow-Origin": "*" } },
+  );
 
 }
 
