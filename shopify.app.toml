@@ -1,0 +1,36 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "7ed8caa05cba90d89941067ea8c58d77"
+name = "SmartWish"
+handle = "smartwish"
+application_url = "https://interests-loops-milan-emily.trycloudflare.com"
+embedded = true
+
+[build]
+include_config_on_deploy = true
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2025-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://interests-loops-milan-emily.trycloudflare.com/auth/callback",
+  "https://interests-loops-milan-emily.trycloudflare.com/auth/shopify/callback",
+  "https://interests-loops-milan-emily.trycloudflare.com/api/auth/callback"
+]
+
+[pos]
+embedded = false
