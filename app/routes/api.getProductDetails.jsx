@@ -60,15 +60,15 @@ export async function loader({ request }) {
 
   const data = await response.json();
 
-  // ✅ Filter only ProductVariant nodes
+  // Filter only ProductVariant nodes
   const result = data.data.nodes.filter((node) => node.__typename === "ProductVariant");
-  return cors(request, json({ result }));
+  // return cors(request, json({ result }));
   
-  // return json(result, {
-  //   headers: {
-  //     "Access-Control-Allow-Origin": "*",
-  //   },
-  // });
+  return json(result, {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
 }
 
 export async function action({ request }) {
